@@ -157,7 +157,7 @@ que seria el length-1 y recorremos a la inversa hasta el 0.*/
 	if (!isNaN(elem)) {
 		if (!isEmpty(queue)){
 			var length = size(queue);	
-			var i=(lentgh-1);
+			var i = (length-1);
 			while (i>=0 && position === -1){
 				if (queue[i] === elem) {
 					position = i;
@@ -213,11 +213,11 @@ que seria el length-1 y recorremos a la inversa hasta el 0.*/
 	var pos = index;
 	var length = size(queue);
 	var elem = 0;
-	if (pos>length) { 
+	if (pos<length) { 
 		var length = size(queue);	
 		elem =queue[pos];
-		for (var i=pos; i<lengt ; i++) {
-			queue[pos]= queue[i+1];
+		for (var i=pos; i<length ; i++) {
+			queue[i]= queue[i+1];
 		} 	 		
 	} else {
 		throw "The index is outside the limits of the list";
@@ -227,13 +227,13 @@ que seria el length-1 y recorremos a la inversa hasta el 0.*/
 
  /*Recorre el array, si encuentra el elemento que deseamos borrar,
  reescribe el array para machacarlo */
- function removeElement(queue,elem){
-	elem = ParseInt(elem);
+ function removeElement(queue,elem) {
+	elemento= ParseInt(elem); 
 	var length = size(queue);
-	var encontrado = FALSE;
-	if (!isNaN(elem)) { 
+	var enco = FALSE;
+	if (!isNaN(elemento)) { 
 		for (var i=0; i<length ; i++) {
-			if (queue(i) === elem) {
+			if (queue(i) === elemento) {
 				encontrado = TRUE;
 				for (var j=i; j<length ; j++) {
 					queue[j]= queue[j+1];
@@ -243,56 +243,25 @@ que seria el length-1 y recorremos a la inversa hasta el 0.*/
 	} else {
 		throw "The element is not a number";
 	} 	
-	return encontrado;
+	return enco;
  }
 
-/*VOY por esta linea el codigo de arriba pertenece al ejercicio
- lista lo de abajo esta por comprobar si es util aqui*/
- function poll(queue){
- 	var elem = 0;
- 	if (!isEmpty(queue)){ 			
- 		var lastIndex = size(queue)-1;	
- 		elem = queue[0]; 		 	 		
- 		for (var i=0; i<lastIndex;i++){
- 			queue[i] = queue[i+1];
- 		} 		 		
- 		queue[i] = Number.NaN;
- 	} else {
- 		throw "The queue is empty. You can't poll any element";
- 	} 	
- 	return elem;
+ function set(queue,elem,index){
+	elem = parseInt(elem);
+	var lengt = size(queue);
+	var susti = 0;
+	if (isNaN(elem)) {
+		throw "The element is not a number";
+	}
+	if (index>(size(queue))) {
+		throw "The index is outside the limits of the list";
+	}
+	susti = queue[index];
+	queue[index] = elem;
+	return susti;
  } 
 
-function peek(queue){
- 	var elem = 0;
- 	if (!isEmpty(queue)){ 			
- 		var lastIndex = size(queue)-1;	
- 		elem = queue[0]; 		 	 		
- 	} else {
- 		throw "The queue is empty. You can't peek any element";
- 	} 	
- 	return elem;
- }
-
- function search(queue,elem){
- 	var position = -1;
- 	elem = parseInt(elem);
- 	if (!isNaN(elem)) {
-	 	if (!isEmpty(queue)){
-	 		var length = size(queue);	
-	 		var i=0;
-	 		while (i<length && position === -1){
-	 			if (queue[i] === elem) {
-	 				position = i;
-	 			}
-	 			i++;
-	 		} 		 		
-	 	} 	
- 	} else{
- 		throw "The element is not a number";
- 	}
- 	return position;
- } 
+/*function de testeo*/
 
  function testqueue(){
  	//var queue = create (); 	
@@ -313,21 +282,16 @@ function peek(queue){
  	console.log ("The full queue: " + toString(queue));	 	
  	console.log ("The first element queue: " + firstElement(queue));
  	console.log ("The last element queue: " + lastElement(queue));
-
- 	console.log ("is 40 in queue: " + search(queue,40));	 	
- 	console.log ("is -40 in queue: " + search(queue,-40));	 	
+	 		 	
  	//clear(queue);
 
- 	try {
-	 	while (true){
-	 		console.log ("Unnonsumed Element: " + peek(queue));
-	 		console.log ("Consumed Element: " + poll(queue));
-	 		console.log ("The queue: " + toString(queue));	 	 		 	
-	 	}
- 	} catch (err) {
- 		console.log(err); //When the queue is empty, an exception will be catched.
- 	}
+	 console.log ("Prueba de remove: " + remove(queue,2));
+	 /*console.log ("Prueba de removeElement: " + removeElement(queue,30));*/
+	 console.log ("Prueba de set: " + set(queue,100,3));
+	 console.log ("Prueba de indexOf: " + indexOf(queue,10));
+	 console.log ("Prueba de lastindexoF: " + lastindexOf(queue,30));
+	 console.log ("Prueba de addAt: " + addAt(queue,19,2));
 
- 	console.log ("The queue: " + toString(queue));	 	
+ 	 console.log ("The queue: " + toString(queue));	 	
  } 
 window.onload = testqueue;
