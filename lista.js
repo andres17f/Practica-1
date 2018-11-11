@@ -257,7 +257,7 @@ que seria el length-1 y recorremos a la inversa hasta el 0.*/
 
 /*function de testeo*/
 
- function testqueue(){
+ function testlist(){
  	//var list = create (); 	
  	var list=[]; 	
  	console.log ("Capacidad: " + capacity(list));
@@ -273,21 +273,22 @@ que seria el length-1 y recorremos a la inversa hasta el 0.*/
  		console.log(err);
  	}
 
- 	console.log ("The full queue: " + toString(list));	 	
- 	console.log ("The first element queue: " + firstElement(list));
- 	console.log ("The last element queue: " + lastElement(list));
+ 	console.log ("The full list: " + toString(list));	 	
+ 	console.log ("The first element list: " + firstElement(list));
+ 	console.log ("The last element list: " + lastElement(list));
 	 		 	
  	//clear(list);
 
 	 console.log ("Prueba de remove: " + remove(list,2));
-	 console.log ("Lista antes: " + toString(list));
+	 console.log ("Lista despues de remove: " + toString(list));
 	 console.log ("Prueba de removeElement: " + removeElement(list,30));
-	 console.log ("Lista despues: " + toString(list));
-	 console.log ("Prueba de set: " + set(list,100,3));
+	 console.log ("Lista despues de removeElement: " + toString(list));
+	 console.log ("Prueba de set: " + set(list,100,2));
+	 console.log ("Lista despues de set: " + toString(list));
 	 console.log ("Prueba de indexOf: " + indexOf(list,10));
 	 console.log ("Prueba de lastindexoF: " + lastindexOf(list,30));
 	 console.log ("Prueba de addAt: " + addAt(list,19,2));
 
  	 console.log ("The List: " + toString(list));	 	
  } 
-window.onload = testqueue;
+window.onload = testlist;
